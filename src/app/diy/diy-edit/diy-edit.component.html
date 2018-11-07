@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup] = "diyProjectForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <button type = "submit" 
+                  class = "btn btn-success"
+                  [disabled]="!diyProjectForm.valid">Save</button>
+          <button type="button" 
+                  class = "btn btn-danger"
+                  (click)= "onCancel()">Cancel</button>
+        </div>
+      </div>
+      <div class="row" style= "margin-top:10px;">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <input type="text"
+                   id="name"
+                   class="form-control"
+                   placeholder="Name"
+                   formControlName = "name">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <input type="text"
+                     id="imgPath"
+                     placeholder="Image path"
+                     class="form-control"
+                     formControlName="imgPath"
+                     #imgPath>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <img [src]="imgPath.value" class="img-responsive">
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+              <div class="from-group">
+                <textarea type="text" 
+                       id="description" 
+                       class="form-control"
+                       placeholder="Description"
+                       rows="6"
+                       formControlName = "description"></textarea>
+              </div>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-xs-12" formArrayName="materials">
+            <div class="row" 
+                 *ngFor = "let materialCtrl of getControls() ; let i = index"
+                 [formGroupName] = "i"
+                 style="margin-top: 10px;">
+              <div class="col-xs-8">
+                <input id="materialName" 
+                       type="text" 
+                       class="form-control"
+                       formControlName = "name">
+              </div>
+              <div class="col-xs-2">
+                <input id="amount" 
+                        type="number" 
+                        class="form-control"
+                        formControlName ="amount">
+              </div>
+              <div class="col-xs-2">
+                <button class="btn btn-danger"
+                        type="button"
+                        (click)= "onDeleteMaterial(i)" > X </button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col=xs-12">
+                <button class="btn btn-success" 
+                        style="margin:15px;" 
+                        (click)= "onAddMaterial()"
+                        type="button">Add Material</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" style = "margin-bottom:20px;">
+          <div class="col-xs-12">
+            <div class="from-group">
+              <textarea type="text" 
+                     id="instructions" 
+                     class="form-control"
+                     rows="10"
+                     placeholder="Instructions"
+                     formControlName = "instructions"></textarea>
+            </div>
+          </div>
+        </div>
+    </form>
+  </div>
+</div>

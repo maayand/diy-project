@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 col-sm-12">
+    <app-material-edit></app-material-edit>
+    <input *ngIf="materials.length" type ="text" id="catgory" class = "form-control" [(ngModel)] = "filteredCategory"  placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome">
+    <ul class="list-group">
+      <a class="list-group-item" 
+         style="cursor:pointer"         
+         *ngFor= "let material of materials|filter:filteredCategory:['name']"
+         (click)="onEditMaterialItem(materials.indexOf(material))">
+          {{material.name}} ({{material.amount}})       
+      </a>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-xs-4">
+    <input type ="text" id="catgory"  placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome" class = "form-control" [(ngModel)] = "filteredCategory">    
+  </div>
+  <div class="col-xs-4">
+    <button class="btn btn-secondary" (click)="onNewDiy()">New DIY Project</button>
+  </div>
+</div>
+<div class="row">
+  <app-diy-item class="col-xs-4 card app-diy-item" *ngFor = "let diyProject of diyProjects | filter:filteredCategory:['name','description']" 
+                [project] = "diyProject"
+                [index]= "diyProjects.indexOf(diyProject)">
+  </app-diy-item>
+</div>

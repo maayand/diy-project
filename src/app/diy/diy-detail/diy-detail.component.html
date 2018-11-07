@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-xs-4">
+    <img [src]="diyProject.imgPath"  
+          alt="{{diyProject.name}}" 
+          class="img-responsive"
+          style = "max-height: 300px; margin: 0 auto;">
+  </div>
+  <div class="col-xs-5">
+    <div class="row">
+      <div class="col-xs-12">
+          <h3 style="margin-top:0px;">{{diyProject.name}}
+            <button 
+              style ="cursor: pointer; float: right;" 
+              (click) = "onDeleteDiy()"
+              data-toggle="tooltip" data-placement="top" 
+              title="Delete DIY Project">
+              <i class="fa fa-trash"></i>
+            </button>
+            <button 
+              style ="cursor: pointer; float: right;" 
+              (click)= "onEditDiy()"
+              data-toggle="tooltip" data-placement="top" 
+              title="Edit DIY Project">
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button 
+              style ="cursor: pointer; float: right;" 
+              (click)="onSendToMatrialList()" 
+              data-toggle="tooltip" data-placement="top" 
+              title="Add to Matirial list">
+              <i class="fa fa-send"></i>
+            </button>
+          </h3>
+      </div>
+      <div class = "send col-xs-12" *ngIf ="isSendToMaterialList" >the materials send to material list </div>
+    </div>
+    <div class="row">
+      <div class = "col-xs-12">
+        <p>{{diyProject.description}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <h4>Instruction: </h4>
+        <p>{{diyProject.instructions}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-3">
+      <h3 style="margin-top:0px;">Matirials needed</h3>
+      <ul class="list-group">
+        <li 
+        class="list-group-item"
+        *ngFor="let material of diyProject.materials">
+          {{material.name}} - {{material.amount}}
+        </li>
+        <li class="list-group-item"  style="padding: 0px">
+            <button class="btn btn-success" style ="cursor: pointer; width:100%" (click)="onSendToMatrialList()"><i class="fa fa-send"></i> Send to Material list</button>
+        </li>
+      </ul>
+  </div>   
+</div>

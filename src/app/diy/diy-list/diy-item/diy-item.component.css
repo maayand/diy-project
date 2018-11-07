@@ -1,0 +1,23 @@
+.item-details {
+    height: 180px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.item-link {
+    cursor:pointer;
+    height: 200px;
+    max-height: 200px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.diy-item-image-span {
+    overflow: hidden;
+    max-height: 180px;
+}
+
+@media (max-width: 767px) {                  
+    .item-details {
+       display: none;
+    }
+ }
