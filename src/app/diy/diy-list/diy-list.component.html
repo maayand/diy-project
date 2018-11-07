@@ -7,7 +7,7 @@
   </div>
 </div>
 <div class="row">
-  <app-diy-item class="col-xs-4 card app-diy-item" *ngFor = "let diyProject of diyProjects | filter:filteredCategory:['name','description']" 
+  <app-diy-item class="col-md-4 col-xs-12 card app-diy-item" *ngFor = "let diyProject of diyProjects | filter:filteredCategory:['name','description']" 
                 [project] = "diyProject"
                 [index]= "diyProjects.indexOf(diyProject)">
   </app-diy-item>
